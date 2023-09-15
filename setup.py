@@ -112,7 +112,7 @@ class DocCommand(Command):
             # Build io extension to make import and docstrings work
             try:
                 output = subprocess.check_output(
-                    ["python", "setup.py", "build_ext", "--inplace", "--force", "--no-murmur3", "--no-cython"],
+                    ["python", "setup.py", "build_ext", "-I/opt/homebrew/include", "-L/opt/homebrew/lib", "--inplace", "--force", "--no-murmur3", "--no-cython"],
                     stderr=subprocess.STDOUT)
             except subprocess.CalledProcessError as exc:
                 raise RuntimeError("Documentation step '%s' failed: %s: %s" % ("build_ext", exc, exc.output))
